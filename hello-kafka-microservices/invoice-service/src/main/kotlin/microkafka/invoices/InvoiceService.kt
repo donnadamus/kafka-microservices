@@ -24,8 +24,6 @@ class InvoiceService(val invoiceRepository: InvoiceRepository,
         // instead of receiving the corresponding event !
         invoiceRepository.save(invoice);
 
-        kafkaTemplate.send("invoices", "create", invoice)
-
         return invoice;
     }
 }
